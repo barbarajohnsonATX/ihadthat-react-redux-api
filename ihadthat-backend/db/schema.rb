@@ -30,11 +30,6 @@ ActiveRecord::Schema.define(version: 2019_12_09_020316) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "toys_users", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "toy_id", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
