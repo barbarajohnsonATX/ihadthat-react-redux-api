@@ -16,6 +16,11 @@ class ToyCard extends Component {
                     <Card.Header>{toy.name}</Card.Header>
                     <Card.Description>{toy.description}</Card.Description>
                 </Card.Content>
+
+                <Card.Content extra>
+                  <Icon name='user' /> {toy.users.length}
+                </Card.Content>
+
             </div>
         </Card>
    
