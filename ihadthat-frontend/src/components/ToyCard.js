@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import './Toy.css';
+import {Card, Icon, Image, Divider } from 'semantic-ui-react';
 
 
 class ToyCard extends Component {
@@ -7,14 +8,16 @@ class ToyCard extends Component {
     const { toy } = this.props;
 
     return(
-       
-        <div key={toy.id} >
+       <Card>
+            <div key={toy.id} >
  
-            <img className="ToyImage" src={toy.url} alt={toy.name}/>
-            <strong>{toy.name}</strong>
-            <p>{toy.description}</p>
-
-        </div>
+                <Image className="ToyImage" src={toy.url} alt={toy.name} />
+                <Card.Content>
+                    <Card.Header>{toy.name}</Card.Header>
+                    <Card.Description>{toy.description}</Card.Description>
+                </Card.Content>
+            </div>
+        </Card>
    
     )
   }
