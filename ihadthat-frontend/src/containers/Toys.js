@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getToys } from '../actions/toys';
 import { connect } from 'react-redux';
+import ToyCard from '../components/ToyCard';
 
 class Toys extends Component {
 
@@ -12,8 +13,9 @@ componentDidMount() {
     render() {
 
         return (
-            <div>Toys</div>
-
+            <div className="Toys">
+            {this.props.toys.map((toy, id) => <ToyCard key={id} toy={toy} />)}
+            </div>
         )
     }
 
