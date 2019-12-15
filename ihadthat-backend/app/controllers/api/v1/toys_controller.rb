@@ -17,13 +17,13 @@ class Api::V1::ToysController < ApplicationController
   # POST /toys
   def create
     @toy = Toy.new(toy_params)
-
     if @toy.save
-      render json: @toy, status: :created, location: @toy
+      render json: @toy
     else
-      render json: @toy.errors, status: :unprocessable_entity
+      render json: {message: @toy.errors }, status: 400
     end
   end
+
 
   # PATCH/PUT /toys/1
   def update

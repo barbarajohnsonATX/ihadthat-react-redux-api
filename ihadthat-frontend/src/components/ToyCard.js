@@ -1,8 +1,7 @@
 import React, { Component } from 'react'; 
 import './Toy.css';
 import {Card, Icon, Image } from 'semantic-ui-react';
-
-
+ 
 class ToyCard extends Component {
   render(){
     const { toy } = this.props;
@@ -29,6 +28,6 @@ class ToyCard extends Component {
 }
 
 
-
+ 
 
 export default ToyCard;

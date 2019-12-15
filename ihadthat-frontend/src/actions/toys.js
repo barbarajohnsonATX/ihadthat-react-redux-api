@@ -1,7 +1,8 @@
+import { resetToyForm } from "./toyForm"
+
 // ** Actions Creators **
 export const setToys = toys => {
-    console.log("setToys=", toys)
-    return {
+     return {
       type: "GET_TOYS_SUCCESS",
       toys
     }
@@ -40,22 +41,21 @@ export const getToys = () => {
 }
 
 export const createToy = ( toy ) => {
-
-    return dispatch => {
-         
+    return dispatch => {  
         return fetch("http://localhost:3000/api/v1/toys",
             { 
                 credentials: "include",
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(toy)
-
             })
        
       .then(r => r.json() )
       .then(toy => {
         dispatch(addToy(toy))
-      })
+        dispatch(resetToyForm())
+       })
+      
      
 }
 }

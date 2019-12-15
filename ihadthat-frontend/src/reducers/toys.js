@@ -5,7 +5,7 @@ export default (state = [], action) => {
             return action.toys
 
         case "CREATE_TOY_SUCCESS":
-            return state.concat(action.toy);
+             return state.concat(action.toy);
 
         default:
             return state
