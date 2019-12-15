@@ -1,6 +1,6 @@
 import React, { Component } from 'react'; 
 import './Toy.css';
-import {Card, Icon, Image, Divider } from 'semantic-ui-react';
+import {Card, Icon, Image } from 'semantic-ui-react';
 
 
 class ToyCard extends Component {
@@ -11,14 +11,14 @@ class ToyCard extends Component {
        <Card>
             <div key={toy.id} >
  
-                <Image className="ToyImage" src={toy.url} alt={toy.name} />
                 <Card.Content>
+                    <Image className="ToyImage" src={toy.url} alt={toy.name} />
                     <Card.Header>{toy.name}</Card.Header>
                     <Card.Description>{toy.description}</Card.Description>
                 </Card.Content>
 
                 <Card.Content extra>
-                  <Icon name='user' /> {toy.users.length}
+                  <Icon name='user' /> {toy.users ? toy.users.length : 0}
                 </Card.Content>
 
             </div>
@@ -27,11 +27,6 @@ class ToyCard extends Component {
     )
   }
 }
-
-
-
- 
-
 
 
 
