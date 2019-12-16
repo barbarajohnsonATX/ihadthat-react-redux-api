@@ -5,8 +5,17 @@ import {Card, Icon, Image } from 'semantic-ui-react';
 class ToyCard extends Component {
   render(){
     const { toy } = this.props;
+    console.log("ToyCard toy", toy)
+
+    let owners = []
+    if(toy.users) {
+      owners = toy.users.map( user => user.username)
+      console.log("Owners", owners)
+    }
+     
 
     return(
+      
        <Card>
             <div key={toy.id} >
  
@@ -17,7 +26,7 @@ class ToyCard extends Component {
                 </Card.Content>
 
                 <Card.Content extra>
-                  <Icon name='user' /> {toy.users ? toy.users.length : 0}
+                  <Icon name='user' /> {owners ? owners.length : 0}
                 </Card.Content>
 
             </div>

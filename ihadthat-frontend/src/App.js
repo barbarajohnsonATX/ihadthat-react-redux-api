@@ -7,7 +7,8 @@ import { getCurrentUser } from './actions/currentUser';
 import  NavBar  from './components/NavBar'
 import MainContainer from './containers/MainContainer';
 import Toys from './containers/Toys';
-import ToyForm from './components/ToyForm'
+import ToyForm from './components/ToyForm';
+import MyStuff from './containers/MyStuff';
 
 class App extends React.Component {
 
@@ -24,6 +25,7 @@ class App extends React.Component {
         <MainContainer />
         <ToyForm />
         <Toys />
+        <MyStuff />
 
       </div>
         
