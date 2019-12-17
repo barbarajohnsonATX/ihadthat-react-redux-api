@@ -16,21 +16,19 @@ export default (state = [], action) => {
             //state is toys 
             //console.log("state", state)
             //action.toy, action.user is the toy with new owner
-            console.log("action", action)
-            let copyA = []
+            //console.log("action", action)
+            
               state.forEach(t => {
                 if (t.id === action.toy.id) {
                     t.users.push(action.user)
                 } 
-                copyA.push(t)
-                
+                 
 
              })
 
-              console.log("state", state)
-              console.log("copyA", copyA)
-
-            return copyA
+            //   console.log("state", state)
+ 
+            return state
 
                
              

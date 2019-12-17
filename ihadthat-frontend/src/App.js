@@ -14,17 +14,21 @@ class App extends React.Component {
 
  
   componentDidMount() {
-    this.props.getCurrentUser()
+  
+     this.props.getCurrentUser()
+   
 
   }
 
   render() {
+     
+    
     return (
       <div className="App">
         <NavBar />
         <MainContainer />
         <ToyForm />
-        <MyStuff />
+        {this.props.user ? <MyStuff /> : ""}  
         <Toys />
 
 
@@ -35,6 +39,13 @@ class App extends React.Component {
   
 }
 
- 
+const mapStateToProps = state => {
 
-export default connect(null, { getCurrentUser })(App);
+return {
+   user: state.currentUser,
+}
+}
+
+
+export default connect(mapStateToProps, { getCurrentUser })(App);
+ 

@@ -13,11 +13,11 @@ export default (state = initialState, action) => {
 
         case "ADD_TOY_OWNERSHIP_SUCCESS":
             //state is user
-            console.log("state", state)
-            action.user.toys.push(action.toy)
+            let newState = Object.assign({}, state)
+            newState.toys.push(action.toy)
             //action.toy, action.user is the toy with new owner
-            console.log("action.user", action.user)
-             return action.user
+            //console.log("newState", newState)
+             return newState
 
         default:
             return state
