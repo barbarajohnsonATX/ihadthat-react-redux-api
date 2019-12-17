@@ -6,18 +6,29 @@ import { Card } from 'semantic-ui-react';
 
 class MyStuff extends Component {
 
+
+
     render() {
-        console.log("MyStuff toys", this.props.user.toys)
-        console.log("All toys", this.props.toys)
 
+        let allToys = this.props.toys
+        let myToys = this.props.user.toys
 
-          return (
+        // console.log("All toys", allToys)
+        // console.log("My toys", myToys)
+
+        //filter from toys list so we can get each toy's owners from the user's toys
+        //.map returns array of toy ids
+        //.includes returns true if myToys id is in allToys
+        let filtered = allToys.filter(toy => myToys.map(t => t.id).includes(toy.id))
+ 
+        
+           return (
 
             <div className="My Stuff">
  
                 <strong>{this.props.user.username}'s Stuff</strong>
                 <Card.Group itemsPerRow={3}>
-                    {this.props.user.toys.map((toy, id, users) => <ToyCard users={users} key={id} toy={toy} />)}
+                    {filtered.map((toy, id) => <ToyCard key={id} toy={toy} />)}
                 </Card.Group>
              </div>
         )

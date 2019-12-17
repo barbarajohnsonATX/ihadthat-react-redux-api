@@ -8,6 +8,7 @@
 
 User.where(username: "Barbara").first_or_create(username: "Barbara", email:"barbara@test.com", password:"password")
 User.where(username: "Eric").first_or_create(username: "Eric", email:"eric@test.com", password:"password")
+User.where(username: "Drew").first_or_create(username: "Drew", email:"drew@test.com", password:"password")
 
 Toy.where(name: "Rubik's Cube").first_or_create(name: "Rubik's Cube", 
     description: "3D combination puzzle", 
@@ -33,5 +34,7 @@ Toy.where(name: "Cabbage Patch Kid").first_or_create(name: "Cabbage Patch Kid",
 ToyOwnership.where(user_id: 1, toy_id: 1).first_or_create(user_id: 1, toy_id: 1)
 ToyOwnership.where(user_id: 1, toy_id: 2).first_or_create(user_id: 1, toy_id: 2)
 ToyOwnership.where(user_id: 2, toy_id: 4).first_or_create(user_id: 2, toy_id: 4)
+ToyOwnership.where(user_id: 2, toy_id: 1).first_or_create(user_id: 2, toy_id: 1)
+ToyOwnership.where(user_id: 3, toy_id: 1).first_or_create(user_id: 3, toy_id: 1)
 
 

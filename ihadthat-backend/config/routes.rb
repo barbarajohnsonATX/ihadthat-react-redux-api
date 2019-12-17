@@ -6,9 +6,14 @@ Rails.application.routes.draw do
   
   namespace :api do 
     namespace :v1 do 
-      resources :toys
+      resources :toys do 
+        resources :users
+      end 
 
-      resources :users
+      resources :users do 
+        resources :toys 
+      end 
+       
       resources :toy_ownerships
 
     end 

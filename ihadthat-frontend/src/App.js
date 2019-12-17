@@ -24,8 +24,11 @@ class App extends React.Component {
         <NavBar />
         <MainContainer />
         <ToyForm />
-        <Toys />
         <MyStuff />
+
+
+        <Toys />
+
 
       </div>
         

@@ -16,15 +16,16 @@ componentDidMount() {
 
         return (
             <div className="Toys">
+            <strong>All Toys</strong>
+
                 <Card.Group itemsPerRow={3}>
-                    {this.props.toys.map((toy, id, users) => <ToyCard users={users} key={id} toy={toy} />)}
+                    {this.props.toys.map((toy, id) => <ToyCard  key={id} toy={toy} />)}
                 </Card.Group>
             </div>
         )
     }
 
- 
-   
+
 }
 
 const mapStateToProps = (state) => {
