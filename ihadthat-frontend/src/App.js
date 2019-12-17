@@ -25,8 +25,6 @@ class App extends React.Component {
         <MainContainer />
         <ToyForm />
         <MyStuff />
-
-
         <Toys />
 
 

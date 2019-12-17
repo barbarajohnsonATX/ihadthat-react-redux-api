@@ -9,6 +9,15 @@ export const setCurrentUser = user => {
     }
 }
 
+export const setToyOwnership = (toy, user) => {
+    return {
+        type: "ADD_TOY_OWNERSHIP_SUCCESS",
+        toy, 
+        user
+         
+    }
+}
+
 export const clearCurrentUser = () => {
     return {
         type: 'CLEAR_CURRENT_USER'

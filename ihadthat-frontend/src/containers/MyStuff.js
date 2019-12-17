@@ -20,7 +20,7 @@ class MyStuff extends Component {
         //.map returns array of toy ids
         //.includes returns true if myToys id is in allToys
         let filtered = allToys.filter(toy => myToys.map(t => t.id).includes(toy.id))
- 
+        console.log("filtered", filtered)
         
            return (
 
