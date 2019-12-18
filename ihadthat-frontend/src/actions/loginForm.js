@@ -7,7 +7,7 @@ export const updateLoginForm = formData => {
 
 export const clearLoginForm = () => {
     return {
-        type: "RESET_LOGIN_FORM",
+        type: "RESET_LOGIN_FORM"
         
          
     }

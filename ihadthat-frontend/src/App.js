@@ -8,6 +8,8 @@ import  NavBar  from './components/NavBar'
 import Toys from './containers/Toys';
 import ToyForm from './components/ToyForm';
 import MyStuff from './containers/MyStuff';
+import Signup from './components/Signup';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
@@ -24,6 +26,8 @@ class App extends React.Component {
           <div className="App">
           <NavBar />
           <ToyForm />
+          <Route path='/signup' render={()=><Signup />}/>
+
 
           <Route path="/toys" component={Toys} />
           {this.props.user ? <Route path="/myStuff" component={MyStuff} /> : ""}

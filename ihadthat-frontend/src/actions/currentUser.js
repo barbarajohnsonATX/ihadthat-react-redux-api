@@ -1,5 +1,6 @@
 
 import { clearLoginForm } from '../actions/loginForm';
+import { resetSignupForm } from '../actions/signupForm';
 
 //action needs a key of type
 
@@ -32,7 +33,7 @@ export const login = credentials => {
     return dispatch => {
         return fetch("http://localhost:3000/api/v1/login",
             { credentials: "include",
-            method: "POST",
+              method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(credentials)
             })
@@ -60,7 +61,8 @@ export const logout = () => {
             credentials: "include",
             method: "DELETE"
         }) 
-        .then(clearLoginForm())
+        .then(dispatch(clearLoginForm()))
+
      }
 }
 
@@ -87,3 +89,33 @@ export const getCurrentUser = () => {
     }
 }
 
+export const signup = (credentials) => {
+    return dispatch => {
+
+      const userInfo = {
+        user: credentials
+      }
+      console.log("userInfo", userInfo)
+
+      return fetch("http://localhost:3000/api/v1/signup", {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userInfo)
+      })
+        .then(r => r.json())
+        .then(user => {
+          if (user.errors) {
+            alert(user.errors)
+          } else {
+              console.log("response data", user)
+               
+            dispatch(setCurrentUser(user))
+             dispatch(resetSignupForm())
+           }
+        })
+        .catch(console.log)
+    }
+  }
