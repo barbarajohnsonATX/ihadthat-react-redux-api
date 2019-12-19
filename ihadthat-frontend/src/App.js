@@ -10,6 +10,7 @@ import ToyForm from './components/ToyForm';
 import MyStuff from './containers/MyStuff';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
+import Home from './components/Home';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Divider, Header } from 'semantic-ui-react'
@@ -31,6 +32,7 @@ class App extends React.Component {
           <Header as='h1' textAlign='center'>
             I had that!!!
           </Header>
+          <Route exact path="/" component={Home}/>
 
           <ToyForm />
           <Route path='/signup' render={()=><Signup />}/>
