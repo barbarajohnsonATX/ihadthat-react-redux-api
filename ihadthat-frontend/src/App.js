@@ -9,8 +9,10 @@ import Toys from './containers/Toys';
 import ToyForm from './components/ToyForm';
 import MyStuff from './containers/MyStuff';
 import Signup from './components/Signup';
+import Footer from './components/Footer';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Divider, Header } from 'semantic-ui-react'
 
 
 class App extends React.Component {
@@ -25,6 +27,11 @@ class App extends React.Component {
       <Router>
           <div className="App">
           <NavBar />
+
+          <Header as='h1' textAlign='center'>
+            I had that!!!
+          </Header>
+
           <ToyForm />
           <Route path='/signup' render={()=><Signup />}/>
 
@@ -32,6 +39,9 @@ class App extends React.Component {
           <Route path="/toys" component={Toys} />
           {this.props.user ? <Route path="/myStuff" component={MyStuff} /> : ""}
  
+            <Divider hidden />
+            <Footer />
+
 
           </div>
       </Router>
