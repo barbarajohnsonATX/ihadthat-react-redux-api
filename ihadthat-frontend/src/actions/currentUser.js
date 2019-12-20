@@ -12,14 +12,15 @@ export const setCurrentUser = user => {
     }
 }
 
-export const setToyOwnership = (toy, user) => {
+
+
+export const setMyToys = (user) => {
     return {
-        type: "ADD_TOY_OWNERSHIP_SUCCESS",
-        toy, 
-        user
-         
-    }
-}
+     type: "GET_MY_TOYS_SUCCESS",
+     user
+     
+   }
+ }
 
 export const clearCurrentUser = () => {
     return {
@@ -89,6 +90,30 @@ export const getCurrentUser = () => {
     }
 }
 
+export const getMyToys = (user) => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/api/v1/users/${user.id}`,
+            { credentials: "include",
+              method: "GET",
+              headers: { "Content-Type": "application/json" },
+            })
+            .then(r => r.json())
+            .then(u => {
+                console.log("user", u)
+                if (u.error) {
+                    alert(u.error)
+                } else {
+                     
+                    dispatch(setMyToys(u))
+                }
+            }
+
+
+            )
+    }
+}
+
+
 export const signup = (credentials) => {
     return dispatch => {
 
@@ -119,3 +144,5 @@ export const signup = (credentials) => {
         .catch(console.log)
     }
   }
+
+ 

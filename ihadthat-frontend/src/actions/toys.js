@@ -10,7 +10,8 @@ export const setToys = toys => {
     }
   }
 
- 
+
+
 
 
 
@@ -46,6 +47,11 @@ export const getToys = () => {
     }
 }
 
+
+
+
+
+
 export const createToy = ( toy ) => {
     return dispatch => {  
         return fetch("http://localhost:3000/api/v1/toys",
@@ -66,24 +72,27 @@ export const createToy = ( toy ) => {
 }
 }
 
-export const claimToy = ( toy, user ) => {
-    const newData = {
-       user_id: user.id,
-       toy_id: toy.id
-   }
-   console.log("newData", newData)
+// export const claimToy = ( toy, user ) => {
+//     const newData = {
+//        user_id: user.id,
+//        toy_id: toy.id
+//    }
+//    console.log("newData", newData)
 
-    return dispatch => {  
-        return fetch(`http://localhost:3000/api/v1/toy_ownerships/`,
-            { 
-                credentials: "include",
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(newData)
-            })
+//     return dispatch => {  
+//         return fetch(`http://localhost:3000/api/v1/toy_ownerships/`,
+//             { 
+//                 credentials: "include",
+//                 method: "POST",
+//                 headers: { "Content-Type": "application/json" },
+//                 body: JSON.stringify(newData)
+//             })
        
-      .then(r => r.json() )
-      .then( dispatch(setToyOwnership(toy, user)))
+//       .then(r => r.json() )
+//       .then( dispatch(setToyOwnership(toy, user)))
      
-    }
-}
+//     }
+// }
+
+
+
