@@ -45,7 +45,7 @@ export const login = credentials => {
                 } else {
                     console.log("user:", user)
                     dispatch(setCurrentUser(user))
-                }
+                 }
             }
 
 

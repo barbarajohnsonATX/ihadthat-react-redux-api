@@ -14,12 +14,13 @@ componentDidMount() {
 
     render() {
 
+        
         return (
             <div className="Toys">
             <strong>All Toys</strong>
 
                 <Card.Group itemsPerRow={3}>
-                    {this.props.toys.map((toy, id) => <ToyCard  key={id} toy={toy} />)}
+                    {this.props.toys.map((toy, id) => <ToyCard  numUsers={toy.users.length} key={id} toy={toy} />)}
                 </Card.Group>
             </div>
         )

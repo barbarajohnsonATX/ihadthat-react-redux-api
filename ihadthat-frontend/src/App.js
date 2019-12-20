@@ -11,52 +11,69 @@ import MyStuff from './containers/MyStuff';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
 import Home from './components/Home';
+import About from './components/About';
+import Login from "./components/Login"
+import Logout from "./components/Logout"
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Divider, Header } from 'semantic-ui-react'
 
 
 class App extends React.Component {
+
 
  
  
 
   render() {
      
-    
+    let loggedIn=this.props.currentUser.username
+   
+
     return (
+      <div>
+           
+              { loggedIn ? <Logout /> : <div> <Login /> <Signup /> </div> }
+ 
+
       <Router>
           <div className="App">
           <NavBar />
 
-          <Header as='h1' textAlign='center'>
-            I had that!!!
-          </Header>
+          <Header as='h1' textAlign='center'>I had that!!!</Header>
+           
+          {loggedIn ? <ToyForm /> : ""}
+
           <Route exact path="/" component={Home}/>
 
-          <ToyForm />
-          <Route path='/signup' render={()=><Signup />}/>
+
+           {loggedIn ? <Route path="/signup" component={Signup}/> : ""}
 
 
           <Route path="/toys" component={Toys} />
-          {this.props.user ? <Route path="/myStuff" component={MyStuff} /> : ""}
+          {loggedIn ? <Route path="/myStuff" component={MyStuff} /> : ""}
  
+          <Route path="/about" component={About}/>
+           
+
             <Divider hidden />
+
             <Footer />
 
 
           </div>
       </Router>
+      </div>
     );
   }
   
 }
 
 const mapStateToProps = (state) => {
-  return {
-    user: state.currentUser
+    return {
+      currentUser: state.currentUser
+    }
   }
-}
 
  
 

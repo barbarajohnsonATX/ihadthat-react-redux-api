@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
             //state is user
             let newState = Object.assign({}, state)
             newState.toys.push(action.toy)
-            //action.toy, action.user is the toy with new owner
+             //action.toy, action.user is the toy with new owner
             //console.log("newState", newState)
              return newState
 

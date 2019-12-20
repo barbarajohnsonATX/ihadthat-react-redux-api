@@ -8,8 +8,9 @@ class ToyCard extends Component {
 
 
   render(){
-   
-    
+   console.log(this.props.claimed, this.props.toy.name)
+   console.log("users of this toy", this.props.toy.users)
+ 
     return(
       
        <Card>
@@ -22,10 +23,14 @@ class ToyCard extends Component {
                 </Card.Content>
 
                 <Card.Content extra>
-                    <Icon name='user' /> {this.props.toy.users !== undefined ? this.props.toy.users.length : 0}
+                    <Icon name='user' /> {this.props.numUsers !== undefined ? this.props.toy.users.length : 0}
+
                 </Card.Content>
 
-                <button onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}>I HAD THIS!</button>
+                {this.props.claimed !== "true" ? 
+                <button onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}>I HAD THIS!</button> :
+                <button onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}>UNCLAIM THIS!</button> } 
+
 
             </div>
         </Card>

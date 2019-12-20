@@ -1,7 +1,4 @@
  
- 
-    
-
 
 export default (state = [], action) => {
     
@@ -17,18 +14,19 @@ export default (state = [], action) => {
             //console.log("state", state)
             //action.toy, action.user is the toy with new owner
             //console.log("action", action)
-            
-              state.forEach(t => {
+            let newState = [...state]
+
+            newState.forEach(t => {
                 if (t.id === action.toy.id) {
                     t.users.push(action.user)
-                } 
+                    
+                 } 
                  
 
              })
 
-            //   console.log("state", state)
- 
-            return state
+  
+            return newState
 
                
              
