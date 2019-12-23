@@ -11,6 +11,9 @@ export default (state = initialState, action) => {
         case "CLEAR_CURRENT_USER":
             return initialState
 
+    
+
+
         case "GET_MY_TOYS_SUCCESS": 
             let newStateWithClaim = Object.assign({}, state)
             newStateWithClaim.toys.map(t => t.claimed="true")
@@ -18,20 +21,21 @@ export default (state = initialState, action) => {
 
         case "ADD_TOY_OWNERSHIP_SUCCESS":
             let newState = Object.assign({}, state)
-            newState.toys.push(action.toy)
+             newState.toys.push(action.toy)
             return newState
             
-               
- 
         case "REMOVE_TOY_OWNERSHIP_SUCCESS":
             let userRemovedToy = Object.assign({}, state)        
             let newList = []
             userRemovedToy.toys.map(toy => {
                 if (toy.id !== action.toy.id) {
-                    newList.push(toy)
+                    toy.claimed="false"
+                     newList.push(toy)
                 }
             })
+
             userRemovedToy.toys = newList
+             
               
             return userRemovedToy      
        

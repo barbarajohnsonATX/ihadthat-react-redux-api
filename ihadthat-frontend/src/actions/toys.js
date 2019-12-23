@@ -1,17 +1,14 @@
 import { resetToyForm } from "./toyForm"
-import { setToyOwnership} from "./currentUser"
-
+import { getToyOwnerships } from "./toyOwnerships"
 
 // ** Actions Creators **
 export const setToys = toys => {
      return {
       type: "GET_TOYS_SUCCESS",
-      toys
+      toys,
+       
     }
   }
-
-
-
 
 
 
@@ -39,6 +36,7 @@ export const getToys = () => {
                 } else {
                     //debugger
                     dispatch(setToys(toys))
+                    dispatch(getToyOwnerships());
                 }
             }
 
@@ -71,28 +69,7 @@ export const createToy = ( toy ) => {
      
 }
 }
-
-// export const claimToy = ( toy, user ) => {
-//     const newData = {
-//        user_id: user.id,
-//        toy_id: toy.id
-//    }
-//    console.log("newData", newData)
-
-//     return dispatch => {  
-//         return fetch(`http://localhost:3000/api/v1/toy_ownerships/`,
-//             { 
-//                 credentials: "include",
-//                 method: "POST",
-//                 headers: { "Content-Type": "application/json" },
-//                 body: JSON.stringify(newData)
-//             })
-       
-//       .then(r => r.json() )
-//       .then( dispatch(setToyOwnership(toy, user)))
-     
-//     }
-// }
+ 
 
 
 

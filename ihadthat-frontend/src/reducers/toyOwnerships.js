@@ -8,7 +8,7 @@
              return state.concat(action.toyOwnership);
 
         case "REMOVE_TOY_OWNERSHIP_SUCCESS":
-            return state.filter(to => to!= action.toyOwnership );
+            return state.filter(to => to.id !== action.toyOwnership.id );
                  
 
         default:

@@ -25,7 +25,7 @@ export const removeToyOwnership = (toyOwnership, user, toy) => {
         type: "REMOVE_TOY_OWNERSHIP_SUCCESS",
         toyOwnership,
         user, 
-        toy
+        toy,
          
     }
 }
@@ -97,7 +97,8 @@ export const claimToy = ( toy, user ) => {
           .then(toyOwnership => {
               console.log(toyOwnership)
                
-            dispatch(removeToyOwnership(selectedToyOwnership, user, toy)) 
+               
+            dispatch(removeToyOwnership( selectedToyOwnership, user, toy)) 
 
           })
       

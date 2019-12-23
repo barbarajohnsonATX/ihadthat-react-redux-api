@@ -8,16 +8,18 @@ import { resetSignupForm } from '../actions/signupForm';
 export const setCurrentUser = user => {
     return {
         type: 'SET_CURRENT_USER',
-        user
+        user 
     }
 }
 
 
 
-export const setMyToys = (user) => {
+export const setMyToys = (user, toys) => {
     return {
      type: "GET_MY_TOYS_SUCCESS",
-     user
+     user,
+     toys
+      
      
    }
  }
@@ -46,6 +48,7 @@ export const login = credentials => {
                 } else {
                     console.log("user:", user)
                     dispatch(setCurrentUser(user))
+                    dispatch(getMyToys(user))
                  }
             }
 
@@ -68,27 +71,29 @@ export const logout = () => {
 }
 
 
-export const getCurrentUser = () => {
-    return dispatch => {
-        return fetch("http://localhost:3000/api/v1/get_current_user",
-            { credentials: "include",
-              method: "GET",
-              headers: { "Content-Type": "application/json" },
-            })
-            .then(r => r.json())
-            .then(user => {
-                console.log(user)
-                if (user.error) {
-                    alert(user.error)
-                } else {
-                    dispatch(setCurrentUser(user))
-                }
-            }
+// export const getCurrentUser = () => {
+//     return dispatch => {
+//         return fetch("http://localhost:3000/api/v1/get_current_user",
+//             { credentials: "include",
+//               method: "GET",
+//               headers: { "Content-Type": "application/json" },
+//             })
+//             .then(r => r.json())
+//             .then(user => {
+//                 console.log(user)
+//                 if (user.error) {
+//                     alert(user.error)
+//                 } else {
+//                   debugger
+//                     dispatch(setCurrentUser(user))
+ 
+//                 }
+//             }
 
 
-            )
-    }
-}
+//             )
+//     }
+//}
 
 export const getMyToys = (user) => {
     return dispatch => {
@@ -98,13 +103,13 @@ export const getMyToys = (user) => {
               headers: { "Content-Type": "application/json" },
             })
             .then(r => r.json())
-            .then(u => {
+            .then((u, t) => {
                 console.log("user", u)
+                 
                 if (u.error) {
                     alert(u.error)
                 } else {
-                     
-                    dispatch(setMyToys(u))
+                    dispatch(setMyToys(u, t))
                 }
             }
 

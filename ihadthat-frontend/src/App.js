@@ -14,6 +14,8 @@ import Home from './components/Home';
 import About from './components/About';
 import Login from "./components/Login"
 import Logout from "./components/Logout"
+ import { getToys } from './actions/toys';
+ import { getMyToys } from './actions/currentUser';
 
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { Divider, Header } from 'semantic-ui-react'
@@ -21,7 +23,12 @@ import { Divider, Header } from 'semantic-ui-react'
 
 class App extends React.Component {
 
+  componentDidMount() {
+    this.props.getToys();
+ 
+  // this.props.getToyOwnerships();
 
+}
  
  
 
@@ -78,4 +85,4 @@ const mapStateToProps = (state) => {
  
 
 
- export default connect(mapStateToProps)(App);
+ export default connect(mapStateToProps, {getToys})(App);

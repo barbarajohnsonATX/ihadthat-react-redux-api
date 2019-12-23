@@ -8,11 +8,11 @@ import { Card } from 'semantic-ui-react';
 
 class Toys extends Component {
 
-componentDidMount() {
-    this.props.getToys();
-    this.props.getToyOwnerships();
+// componentDidMount() {
+//     this.props.getToys();
+//     this.props.getToyOwnerships();
 
-}
+// }
 
     render() {
 
@@ -33,8 +33,10 @@ componentDidMount() {
 
 const mapStateToProps = (state) => {
     return ({
-      toys: state.toys
+      toys: state.toys,
+      currentUser: state.currentUser
     })
   }
 
-export default connect(mapStateToProps, { getToys, getToyOwnerships })(Toys);
+//export default connect(mapStateToProps, { getToys, getToyOwnerships })(Toys);
+export default connect(mapStateToProps)(Toys);
