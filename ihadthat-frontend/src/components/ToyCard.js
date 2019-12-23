@@ -28,8 +28,8 @@ class ToyCard extends Component {
 
                 </Card.Content>
                 {this.props.toy.claimed !== "true" ? 
-                <button className="ui green basic button" onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}>I HAD THIS!</button> :
-                <button className="ui red basic button" onClick={() => {this.props.unclaimToy( this.props.toyOwnerships, this.props.toy, this.props.user)}}>UNCLAIM THIS!</button> } 
+                <button className="ui inverted green button" onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}>I HAD THIS!</button> :
+                <button className="ui inverted red button" onClick={() => {this.props.unclaimToy( this.props.toyOwnerships, this.props.toy, this.props.user)}}>UNCLAIM THIS!</button> } 
 
 
             </div>
