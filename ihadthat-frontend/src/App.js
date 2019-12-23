@@ -15,8 +15,7 @@ import About from './components/About';
 import Login from "./components/Login"
 import Logout from "./components/Logout"
  import { getToys } from './actions/toys';
- import { getMyToys } from './actions/currentUser';
-
+ 
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Divider, Header } from 'semantic-ui-react'
 

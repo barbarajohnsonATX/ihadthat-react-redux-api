@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
             let newList = []
             let findToy = userRemoved.find(t => t.id === action.toy.id)
              findToy.claimed="false"
-            findToy.users.map(user => {
+            findToy.users.forEach(user => {
                 if (user.id !== action.user.id) {
                      newList.push(user)
                 }

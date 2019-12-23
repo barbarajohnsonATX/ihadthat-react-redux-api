@@ -27,9 +27,10 @@ export default (state = initialState, action) => {
         case "REMOVE_TOY_OWNERSHIP_SUCCESS":
             let userRemovedToy = Object.assign({}, state)        
             let newList = []
-            userRemovedToy.toys.map(toy => {
+            userRemovedToy.toys.forEach(toy => {
                 if (toy.id !== action.toy.id) {
                       newList.push(toy)
+                      return toy
                 } else {
                     toy.claimed = "false"
                 }

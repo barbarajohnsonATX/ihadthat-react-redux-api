@@ -1,4 +1,4 @@
-import { getMyToys } from '../actions/currentUser';
+// import { getMyToys } from '../actions/currentUser';
 
 
 // Synchronous action creators

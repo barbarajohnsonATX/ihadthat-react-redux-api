@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ToyCard from '../components/ToyCard';
 import { Card } from 'semantic-ui-react';
-import { getMyToys } from '../actions/currentUser';
- 
+  
 
 class MyStuff extends Component {
 
