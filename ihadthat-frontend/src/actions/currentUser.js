@@ -1,4 +1,3 @@
-
 import { clearLoginForm } from '../actions/loginForm';
 import { resetSignupForm } from '../actions/signupForm';
 
@@ -149,5 +148,3 @@ export const signup = (credentials) => {
         .catch(console.log)
     }
   }
-
- 

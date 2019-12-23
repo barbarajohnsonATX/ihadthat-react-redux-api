@@ -17,7 +17,7 @@ import Logout from "./components/Logout"
  import { getToys } from './actions/toys';
  import { getMyToys } from './actions/currentUser';
 
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Divider, Header } from 'semantic-ui-react'
 
 
@@ -42,7 +42,7 @@ class App extends React.Component {
            
               { loggedIn ? <Logout /> : <div> <Login /> <Signup /> </div> }
  
-
+      
       <Router>
           <div className="App">
           <NavBar />
@@ -51,6 +51,7 @@ class App extends React.Component {
            
           {loggedIn ? <ToyForm /> : ""}
 
+<Switch>
           <Route exact path="/" component={Home}/>
 
 
@@ -61,7 +62,7 @@ class App extends React.Component {
           {loggedIn ? <Route path="/myStuff" component={MyStuff} /> : ""}
  
           <Route path="/about" component={About}/>
-           
+   </Switch> 
 
             <Divider hidden />
 

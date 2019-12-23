@@ -29,12 +29,14 @@ export default (state = initialState, action) => {
             let newList = []
             userRemovedToy.toys.map(toy => {
                 if (toy.id !== action.toy.id) {
-                    toy.claimed="false"
-                     newList.push(toy)
+                      newList.push(toy)
+                } else {
+                    toy.claimed = "false"
                 }
             })
 
             userRemovedToy.toys = newList
+             
              
               
             return userRemovedToy      
