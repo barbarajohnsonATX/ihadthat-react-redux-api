@@ -7,7 +7,7 @@ import { Menu } from 'semantic-ui-react';
  
 
 
-const NavBar = ({ currentUser }) => {
+const NavBar = () => {
 
  
     return (
@@ -29,10 +29,13 @@ const NavBar = ({ currentUser }) => {
             <Link to='/myStuff' className='item'>
                 View My Toys
             </Link> 
+ 
 
             <Link to='/about' className='item'>
                 About Us
             </Link>
+
+   
              
 
         </Menu>

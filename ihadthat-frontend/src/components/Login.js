@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateLoginForm } from '../actions/loginForm'
 import { login } from '../actions/currentUser'
-
-
+ 
+ 
 
 const Login = ({ loginFormData,  updateLoginForm, login }) => {
 
@@ -26,10 +26,12 @@ const Login = ({ loginFormData,  updateLoginForm, login }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input placeholder="User name" value={loginFormData.username} name="username" type="text" onChange={handleInputChange}/>
-            <input placeholder="password" value={loginFormData.password} name="password" type="text" onChange={handleInputChange}/>
-        <input type="submit" value="Log In" />
-            
+            <div className="ui input">
+            <input placeholder="user name" value={loginFormData.username} name="username" type="text" onChange={handleInputChange}/>
+            <input placeholder="password" value={loginFormData.password} name="password" type="text" onChange={handleInputChange}/><br/><br/>
+ 
+                    <input className="ui blue button" type="submit" value="Log In" />
+             </div>
         </form>
 
     )

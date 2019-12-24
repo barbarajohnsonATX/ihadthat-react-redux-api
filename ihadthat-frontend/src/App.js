@@ -14,7 +14,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Login from "./components/Login"
 import Logout from "./components/Logout"
- import { getToys } from './actions/toys';
+import { getToys } from './actions/toys';
  
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Divider, Header } from 'semantic-ui-react'
@@ -24,8 +24,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.getToys();
- 
-  // this.props.getToyOwnerships();
 
 }
  
@@ -38,34 +36,26 @@ class App extends React.Component {
 
     return (
       <div>
-           
-              { loggedIn ? <Logout /> : <div> <Login /> <Signup /> </div> }
- 
-      
+    
       <Router>
           <div className="App">
           <NavBar />
 
-          <Header as='h1' textAlign='center'>I had that!!!</Header>
+          <Header as='h2' textAlign='center'>I had that!!!</Header>
            
-          {loggedIn ? <ToyForm /> : ""}
+          { loggedIn ? <Logout /> : <div> <Login /> <Signup /> </div> }
+          { loggedIn ? <ToyForm /> : ""}
 
-<Switch>
-          <Route exact path="/" component={Home}/>
+          <Switch>
+                <Route exact path="/" component={Home}/>
+                <Route path="/toys" component={Toys} />
+                <Route path="/myStuff" component={MyStuff} /> 
+                <Route path="/about" component={About}/>
+          </Switch> 
 
+          <Divider hidden />
 
-           {loggedIn ? <Route path="/signup" component={Signup}/> : ""}
-
-
-          <Route path="/toys" component={Toys} />
-          {loggedIn ? <Route path="/myStuff" component={MyStuff} /> : ""}
- 
-          <Route path="/about" component={About}/>
-   </Switch> 
-
-            <Divider hidden />
-
-            <Footer />
+          <Footer />
 
 
           </div>
