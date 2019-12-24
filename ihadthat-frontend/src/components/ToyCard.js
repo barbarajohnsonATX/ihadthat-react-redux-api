@@ -24,13 +24,17 @@ class ToyCard extends Component {
                 </Card.Content>
 
                 <Card.Content extra>
-                    <Icon name='user' /> {this.props.numUsers !== undefined ? this.props.toy.users.length : 0}
+                    <Icon name='purple user' /> {this.props.numUsers !== undefined ? this.props.toy.users.length : 0}
 
                 </Card.Content>
  
+
+  
+
+  
                   { this.props.toy.claimed !== "true" ? 
-                   <button className="ui inverted green button" onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}>I HAD THIS!</button> :
-                   <button className="ui inverted red button" onClick={() => {this.props.unclaimToy( this.props.toyOwnerships, this.props.toy, this.props.user)}}>UNCLAIM THIS!</button> 
+                   <div className="ui inverted  green button" onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}><Icon name="green plus" />I HAD THIS</div> :
+                   <div className="ui inverted red button" onClick={() => {this.props.unclaimToy( this.props.toyOwnerships, this.props.toy, this.props.user)}}><Icon name="red minus" />UNCLAIM THIS</div> 
                   }   
 
              </div>

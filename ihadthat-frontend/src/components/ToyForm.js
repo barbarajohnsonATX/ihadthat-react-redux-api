@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateToyFormData } from '../actions/toyForm';
 import { createToy } from '../actions/toys';
-import { Form, Button, Divider } from 'semantic-ui-react';
+import { Form, Icon, Divider } from 'semantic-ui-react';
  
 
 
@@ -64,7 +64,10 @@ class ToyForm extends Component {
           
           </Form.Group>
           
-        <Button color='blue'>Add New Toy</Button>
+
+
+        <button className="ui purple button" type="submit" value="Add Toy Out" ><Icon name="gamepad" />Add Toy</button>
+
         </Form>
           
       </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ToyCard from '../components/ToyCard';
-import { Card } from 'semantic-ui-react';
+import { Card, Divider } from 'semantic-ui-react';
   
 
 class MyStuff extends Component {
@@ -20,8 +20,13 @@ class MyStuff extends Component {
            return (
 
             <div className="My Stuff">
+              <Divider hidden />
  
-                <strong>{this.props.user.username}'s Toys</strong>
+                {this.props.user.username ? <strong>{this.props.user.username}'s Toys</strong> : <strong>Log in or sign up</strong>}
+                
+                <Divider hidden />
+
+                
                  <Card.Group itemsPerRow={3}>
                    {newArray.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
                   </Card.Group>
