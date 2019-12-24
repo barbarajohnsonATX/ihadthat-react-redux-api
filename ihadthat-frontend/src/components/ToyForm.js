@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateToyFormData } from '../actions/toyForm';
 import { createToy } from '../actions/toys';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Divider } from 'semantic-ui-react';
  
 
 
@@ -36,6 +36,8 @@ class ToyForm extends Component {
     const { name, description, url } = this.props.toyFormData;
     return(
       <div>
+      <Divider />
+
     <Form onSubmit={this.handleonSubmit}>
           <Form.Group widths='equal'>
            <Form.Input

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ToyCard from '../components/ToyCard';
 import { Card } from 'semantic-ui-react';
 import Trending from '../components/Stats';
+import { Divider } from 'semantic-ui-react'
 
 
 class Toys extends Component {
@@ -18,8 +19,9 @@ class Toys extends Component {
         
         return (
             <div className="Toys">
-            
+            <Divider />
             <Trending numToys={this.props.toys.length} topThree={sorted.slice(0, 3)}/>
+            <Divider />
 
 
             <strong>All Toys</strong>
