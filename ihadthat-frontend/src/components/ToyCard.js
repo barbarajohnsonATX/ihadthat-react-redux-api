@@ -8,9 +8,13 @@ class ToyCard extends Component {
 
 
   render(){
-   console.log("props.claimed", this.props.claimed, this.props.toy.name)
-   console.log("users of this toy", this.props.toy.users)
  
+ 
+   let buttonsVisible =  <div>
+   { this.props.toy.claimed !== "true" ? 
+    <div className="ui inverted  green button" onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}><Icon name="green plus" />I HAD THIS</div> :
+    <div className="ui inverted red button" onClick={() => {this.props.unclaimToy( this.props.toyOwnerships, this.props.toy, this.props.user)}}><Icon name="red minus" />UNCLAIM THIS</div> 
+   }   </div>
 
     return(
       
@@ -29,13 +33,8 @@ class ToyCard extends Component {
                 </Card.Content>
  
 
-  
-
-  
-                  { this.props.toy.claimed !== "true" ? 
-                   <div className="ui inverted  green button" onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}><Icon name="green plus" />I HAD THIS</div> :
-                   <div className="ui inverted red button" onClick={() => {this.props.unclaimToy( this.props.toyOwnerships, this.props.toy, this.props.user)}}><Icon name="red minus" />UNCLAIM THIS</div> 
-                  }   
+            {this.props.user.username ? buttonsVisible : ""}
+ 
 
              </div>
         </Card>
