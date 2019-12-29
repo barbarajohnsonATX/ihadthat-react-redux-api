@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import { getToys } from '../actions/toys';
-// import { getToyOwnerships } from '../actions/toyOwnerships';
-import { connect } from 'react-redux';
+  import { connect } from 'react-redux';
 import ToyCard from '../components/ToyCard';
 import { Card } from 'semantic-ui-react';
 import Trending from '../components/Stats';
@@ -50,7 +48,7 @@ class Toys extends Component {
 const mapStateToProps = (state) => {
     return ({
       toys: state.toys,
-      currentUser: state.currentUser
+    //   currentUser: state.currentUser
     })
   }
 

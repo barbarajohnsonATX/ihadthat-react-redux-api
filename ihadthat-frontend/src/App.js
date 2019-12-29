@@ -17,7 +17,7 @@ import Logout from "./components/Logout"
 import { getToys } from './actions/toys';
  
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import { Divider, Header } from 'semantic-ui-react'
+import { Divider } from 'semantic-ui-react'
 
 
 class App extends React.Component {
@@ -40,7 +40,6 @@ class App extends React.Component {
       <Router>
           <div className="App">
           <NavBar />
-          {/* <Header as='h2' textAlign='center'>I had that!!!</Header> */}
 
           <h2>I HAD THAT!</h2>
            
