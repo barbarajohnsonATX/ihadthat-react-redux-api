@@ -10,6 +10,8 @@ import { Divider } from 'semantic-ui-react'
 
 class Toys extends Component {
  
+   
+
 
     render() {
          let sorted = this.props.toys.sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
@@ -19,6 +21,10 @@ class Toys extends Component {
         
         return (
             <div className="Toys">
+ 
+
+
+
             <Divider />
             <Trending numToys={this.props.toys.length} topThree={sorted.slice(0, 3)}/>
             <Divider />
@@ -29,6 +35,7 @@ class Toys extends Component {
 
 
                 <Card.Group itemsPerRow={3}>
+
                     {this.props.toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
                 </Card.Group>
 

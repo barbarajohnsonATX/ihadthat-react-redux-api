@@ -70,29 +70,29 @@ export const logout = () => {
 }
 
 
-// export const getCurrentUser = () => {
-//     return dispatch => {
-//         return fetch("http://localhost:3000/api/v1/get_current_user",
-//             { credentials: "include",
-//               method: "GET",
-//               headers: { "Content-Type": "application/json" },
-//             })
-//             .then(r => r.json())
-//             .then(user => {
-//                 console.log(user)
-//                 if (user.error) {
-//                     alert(user.error)
-//                 } else {
-//                   debugger
-//                     dispatch(setCurrentUser(user))
+export const getCurrentUser = () => {
+    return dispatch => {
+        return fetch("http://localhost:3000/api/v1/get_current_user",
+            { credentials: "include",
+              method: "GET",
+              headers: { "Content-Type": "application/json" },
+            })
+            .then(r => r.json())
+            .then(user => {
+                console.log(user)
+                if (user.error) {
+                    alert(user.error)
+                } else {
+                  debugger
+                    dispatch(setCurrentUser(user))
  
-//                 }
-//             }
+                }
+            }
 
 
-//             )
-//     }
-//}
+            )
+    }
+}
 
 export const getMyToys = (user) => {
     return dispatch => {

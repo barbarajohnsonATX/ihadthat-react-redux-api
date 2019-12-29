@@ -66,7 +66,7 @@ class ToyForm extends Component {
           
 
 
-        <button className="ui purple button" type="submit" value="Add Toy Out" ><Icon name="gamepad" />Add Toy</button>
+        <button className="button button-add" type="submit" value="Add Toy Out" ><Icon name="gamepad" />Add Toy</button>
 
         </Form>
           

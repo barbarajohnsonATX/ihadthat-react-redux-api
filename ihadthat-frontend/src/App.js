@@ -40,8 +40,9 @@ class App extends React.Component {
       <Router>
           <div className="App">
           <NavBar />
+          {/* <Header as='h2' textAlign='center'>I had that!!!</Header> */}
 
-          <Header as='h2' textAlign='center'>I had that!!!</Header>
+          <h2>I HAD THAT!</h2>
            
           { loggedIn ? <Logout /> : <div> <Login /> <Signup /> </div> }
           { loggedIn ? <ToyForm /> : ""}

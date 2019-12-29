@@ -35,7 +35,7 @@ const Signup = ({ signupFormData, updateSignupForm, signup }) => {
         <input placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleUserInfoInputChange} /> 
          <input placeholder="email" value={signupFormData.email} name="email" type="text" onChange={handleUserInfoInputChange} /> <br/><br/>
 
-        <button className="ui green button" type="submit" value="Sign Up" > <Icon name="user plus" /> Sign up</button>
+        <button className="button button-signup" type="submit" value="Sign Up" > <Icon name="user plus" /> Sign up</button>
 
         </div>
       </form>

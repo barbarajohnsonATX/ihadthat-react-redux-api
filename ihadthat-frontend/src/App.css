@@ -1,6 +1,15 @@
+ 
 .App {
   text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+
 }
+
+h2{
+  font-family: 'Monoton', cursive;
+  color: #519d90;
+}
+ 
 
 .App-logo {
   height: 40vmin;
