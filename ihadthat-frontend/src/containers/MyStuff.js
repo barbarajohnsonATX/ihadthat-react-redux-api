@@ -22,7 +22,7 @@ class MyStuff extends Component {
             <div className="My Stuff">
               <Divider hidden />
  
-                {this.props.user.username ? <strong>{this.props.user.username}'s Toys</strong> : <strong>Log in or sign up</strong>}
+                {this.props.user.username ? <h3>{this.props.user.username}'s Toys</h3> : <strong>Log in or sign up</strong>}
                 
                 <Divider hidden />
 

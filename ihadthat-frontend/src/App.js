@@ -41,7 +41,7 @@ class App extends React.Component {
           <div className="App">
           <NavBar />
 
-          <h2>I HAD THAT!</h2>
+          <h3>I HAD THAT!</h3>
            
           { loggedIn ? <Logout /> : <div> <Login /> <Signup /> </div> }
           { loggedIn ? <ToyForm /> : ""}

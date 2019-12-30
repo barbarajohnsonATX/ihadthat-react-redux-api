@@ -8,7 +8,7 @@ const About = () => {
     <div>
       <Divider />
       <Container>
-        <h2>About Us</h2>
+        <h3>About Us</h3>
 
        <p>Cupcake ipsum dolor sit. Amet liquorice jelly-o sesame snaps macaroon I love. I love gummi bears biscuit I love candy canes cotton candy I love gummies chupa chups. Cake sesame snaps lemon drops.</p>
 
