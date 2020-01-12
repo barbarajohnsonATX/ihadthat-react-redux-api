@@ -26,5 +26,13 @@ cd npm start
 
 You should see the app from `localhost:3001`.
  
+### Usage
+* Click on Sign Up to register as a user.
+* Click on Log In to log in as a registered user.
+* Click on View All Toys to view available toys.
+* Click on My Toys to see your collection.
+* Enter new toy info and click on Add New Toy.
+* Click on I Had This button if you had that toy. 
+* Click on Unclaim button to remove the toy from your collection.
  
  
