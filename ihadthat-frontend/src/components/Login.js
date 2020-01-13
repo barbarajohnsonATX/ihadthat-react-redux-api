@@ -10,16 +10,22 @@ const Login = ({ loginFormData,  updateLoginForm, login }) => {
 
     const handleInputChange = event => {
          const { name, value } = event.target
+
+         //create updatedLoginFormInfo object from loginForm state
          const updatedLoginFormInfo = {
             ...loginFormData,
             [name]: value
         }
-    
+     
+        // pass updatedLoginFormInfo object to action creator
         updateLoginForm(updatedLoginFormInfo)
     }
 
     const handleSubmit = event => {
+     
         event.preventDefault()
+
+        //call asynch action creator and pass loginFormData as credentials
         login(loginFormData)
 
 
@@ -41,7 +47,7 @@ const Login = ({ loginFormData,  updateLoginForm, login }) => {
     )
 }
 
-//this gives me an argument coming to this component that looks like this: 
+//loginForm state has user credentials
 //{
 //     username: "xxx",
 //     password: "password"

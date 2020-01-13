@@ -6,10 +6,7 @@ import { Card, Divider } from 'semantic-ui-react';
 
 class MyStuff extends Component {
 
-    // componentDidMount() {
-    //     this.props.getMyToys(this.props.user);
-     
-    // }
+ 
 
     render() {
             console.log("state", this.props.user.toys)
@@ -45,4 +42,4 @@ const mapStateToProps = (state) => {
   }
 
  export default connect(mapStateToProps)(MyStuff);
-//export default connect(mapStateToProps, { getMyToys })(MyStuff);
+ 

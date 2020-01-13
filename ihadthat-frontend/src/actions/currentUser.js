@@ -41,11 +41,9 @@ export const login = credentials => {
             })
             .then(r => r.json())
             .then(user => {
-                console.log(user)
                 if (user.error) {
                     alert(user.error)
                 } else {
-                    console.log("user:", user)
                     dispatch(setCurrentUser(user))
                     dispatch(getMyToys(user))
                  }

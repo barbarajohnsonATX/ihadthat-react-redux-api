@@ -16,15 +16,13 @@ export default (state = initialState, action) => {
         case "GET_MY_TOYS_SUCCESS": 
             let newStateWithClaims = [...state]
             newStateWithClaims.forEach(t => t.claimed="false")
-             let newToys = action.user.toys
-             newToys.forEach(t => t.claimed="true")
+             let userToys = action.user.toys
+             userToys.forEach(t => t.claimed="true")
               
-  
- 
-            let newA= newStateWithClaims.map(toy => newToys.find(t => t.id === toy.id) || toy)
-                    
-              
-            return newA
+            //return user's toys with claimed="true"
+            return newStateWithClaims.map(toy => userToys.find(t => t.id === toy.id) || toy)
+
+            
 
 
 
