@@ -15,11 +15,14 @@ export default (state = initialState, action) => {
 
         case "GET_MY_TOYS_SUCCESS": 
             let newStateWithClaims = [...state]
+            
             newStateWithClaims.forEach(t => t.claimed="false")
              let userToys = action.user.toys
-             userToys.forEach(t => t.claimed="true")
+             console.log("userToys", userToys)
               
-            //return user's toys with claimed="true"
+             userToys.forEach(t => t.claimed="true")
+               
+            //return udpated toys list with claimed="true"
             return newStateWithClaims.map(toy => userToys.find(t => t.id === toy.id) || toy)
 
             
@@ -45,7 +48,7 @@ export default (state = initialState, action) => {
               })
              return newState
 
-        case "REMOVE_TOY_OWNERSHIP_SUCCESS":
+    case "REMOVE_TOY_OWNERSHIP_SUCCESS":
              
             let userRemoved = [...state]   
                  
@@ -61,7 +64,7 @@ export default (state = initialState, action) => {
             
             findToy.users = newList
              
-            return userRemoved
+            return userRemoved 
 
 
             

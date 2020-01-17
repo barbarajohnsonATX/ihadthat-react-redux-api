@@ -30,6 +30,15 @@ Toy.where(name: "Cabbage Patch Kid").first_or_create(name: "Cabbage Patch Kid",
     description: "Baby dolls born in a cabbage patch who needed to be adopted", 
     url: "http://www.retroland.com/wp-content/uploads/2012/06/Cabbage-Patch-Kids.jpg")
 
+Toy.where(name: "Commodore VIC-20").first_or_create(name: "Commodore VIC-20", 
+    description: "8-bit computer", 
+    url: "http://oldcomputers.net/pics/vic20.jpg")
+
+Toy.where(name: "LEGO").first_or_create(name: "LEGO", 
+    description: "Building blocks that are painful to step on", 
+    url: "https://www.toyhalloffame.org/sites/www.toyhalloffame.org/files/toys/square/lego_0.png")
+
+
 
 ToyOwnership.where(user_id: 1, toy_id: 1).first_or_create(user_id: 1, toy_id: 1)
 ToyOwnership.where(user_id: 1, toy_id: 2).first_or_create(user_id: 1, toy_id: 2)

@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ToyCard from '../components/ToyCard';
 import { Card, Divider } from 'semantic-ui-react';
-  
+ 
 
 class MyStuff extends Component {
 
- 
+
 
     render() {
-            console.log("state", this.props.user.toys)
-             
- 
-          let newArray = this.props.toys.filter(toy => this.props.user.toys.map(t => t.id).includes(toy.id))
-             
+      let loggedIn=this.props.user.username
+
+                        
            return (
 
             <div className="My Stuff">
@@ -25,7 +23,8 @@ class MyStuff extends Component {
 
                 
                  <Card.Group itemsPerRow={3}>
-                   {newArray.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
+                  
+                {loggedIn && this.props.user.toys[0].users ? (this.props.user.toys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)) : "" }
                   </Card.Group>
              </div>
         )
@@ -36,8 +35,7 @@ class MyStuff extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-      user: state.currentUser,
-      toys: state.toys 
+      user: state.currentUser
     })
   }
 

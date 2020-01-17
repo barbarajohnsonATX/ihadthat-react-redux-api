@@ -13,12 +13,12 @@ export const setCurrentUser = user => {
 
 
 
-export const setMyToys = (user, toys) => {
+export const setMyToys = (user) => {
+   
     return {
      type: "GET_MY_TOYS_SUCCESS",
-     user,
-     toys
-      
+     user
+     
      
    }
  }
@@ -46,11 +46,9 @@ export const login = credentials => {
                 } else {
                     dispatch(setCurrentUser(user))
                     dispatch(getMyToys(user))
+                    
                  }
-            }
-
-
-            )
+            })
     }
 }
 
@@ -68,7 +66,7 @@ export const logout = () => {
 }
 
 
-export const getCurrentUser = () => {
+/* export const getCurrentUser = () => {
     return dispatch => {
         return fetch("http://localhost:3000/api/v1/get_current_user",
             { credentials: "include",
@@ -90,7 +88,7 @@ export const getCurrentUser = () => {
 
             )
     }
-}
+} */
 
 export const getMyToys = (user) => {
     return dispatch => {
@@ -100,13 +98,13 @@ export const getMyToys = (user) => {
               headers: { "Content-Type": "application/json" },
             })
             .then(r => r.json())
-            .then((u, t) => {
-                console.log("user", u)
+            .then((u) => {
                  
                 if (u.error) {
                     alert(u.error)
                 } else {
-                    dispatch(setMyToys(u, t))
+                    dispatch(setMyToys(u))
+
                 }
             }
 
