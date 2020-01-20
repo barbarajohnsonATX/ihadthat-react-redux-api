@@ -25,7 +25,7 @@ export const removeToyOwnership = (toyOwnership, user, toy) => {
         type: "REMOVE_TOY_OWNERSHIP_SUCCESS",
         toyOwnership,
         user, 
-        toy,
+        toy
          
     }
 }

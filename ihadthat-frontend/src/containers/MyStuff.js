@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import ToyCard from '../components/ToyCard';
 import { Card, Divider } from 'semantic-ui-react';
  
-
 class MyStuff extends Component {
 
-
+ 
 
     render() {
-      let loggedIn=this.props.user.username
+       
+      // filter user's toys from toys to get number of users of each toy to avoid undefined length error
+       let userToys = this.props.toys.filter(toy => this.props.user.toys.map(t => t.id).includes(toy.id))
+        
 
                         
            return (
@@ -23,9 +25,9 @@ class MyStuff extends Component {
 
                 
                  <Card.Group itemsPerRow={3}>
-                  
-                {loggedIn && this.props.user.toys[0].users ? (this.props.user.toys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)) : "" }
-                  </Card.Group>
+    
+                 {userToys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
+         </Card.Group>
              </div>
         )
     }
@@ -35,7 +37,8 @@ class MyStuff extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-      user: state.currentUser
+      user: state.currentUser,
+      toys: state.toys
     })
   }
 

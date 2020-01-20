@@ -1,10 +1,9 @@
- 
 const initialState = [
     {
-    name: "",
-    description: "",
-    users: [], 
-    claimed: "false"
+        name: "",
+        description: "",
+        users: [], 
+        claimed: "false"
     }
 ]
 export default (state = initialState, action) => {
