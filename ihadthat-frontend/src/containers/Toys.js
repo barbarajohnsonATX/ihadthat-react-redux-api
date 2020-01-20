@@ -9,13 +9,16 @@ import { Divider } from 'semantic-ui-react'
 class Toys extends Component {
 
     render() {
-        let sorted = this.props.toys.sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
+        //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
+        const { toys } = this.props;
+
+        let sorted = toys.sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
         
         return (
             <div className="Toys">
 
             <Divider />
-            <Stats numToys={this.props.toys.length} topThree={sorted.slice(0, 3)}/>
+            <Stats numToys={toys.length} topThree={sorted.slice(0, 3)}/>
             <Divider />
 
 
@@ -23,7 +26,7 @@ class Toys extends Component {
 
                 <Card.Group itemsPerRow={3}>
 
-                    {this.props.toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
+                    {toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
                 </Card.Group>
 
 

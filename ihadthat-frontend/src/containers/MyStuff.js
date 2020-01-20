@@ -8,9 +8,12 @@ class MyStuff extends Component {
  
 
     render() {
+      //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
+      const { toys, user  } = this.props;
+
        
       // filter user's toys from toys to get number of users of each toy to avoid undefined length error
-       let userToys = this.props.toys.filter(toy => this.props.user.toys.map(t => t.id).includes(toy.id))
+       let userToys = toys.filter(toy => user.toys.map(t => t.id).includes(toy.id))
         
 
                         
@@ -19,7 +22,7 @@ class MyStuff extends Component {
             <div className="My Stuff">
               <Divider hidden />
  
-                {this.props.user.username ? <h3>{this.props.user.username}'s Toys</h3> : <strong>Log in or sign up</strong>}
+                {user.username ? <h3>{user.username}'s Toys</h3> : <strong>Log in or sign up</strong>}
                 
                 <Divider hidden />
 
