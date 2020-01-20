@@ -10,33 +10,34 @@ class ToyCard extends Component {
 
   render(){
  
- 
+    const { toy, user, numUsers, toyOwnerships } = this.props;
+
    let buttonsVisible =  
    <div>
-   { this.props.toy.claimed !== "true" ? 
-    <div className="claim-button" onClick={() => {this.props.claimToy(this.props.toy, this.props.user)}}><i className='plus icon plus-class'  />I HAD THIS</div> :
-    <div className="unclaim-button" onClick={() => {this.props.unclaimToy( this.props.toyOwnerships, this.props.toy, this.props.user)}}><i className="minus icon minus-class" />UNCLAIM THIS</div> 
+   { toy.claimed !== "true" ? 
+    <div className="claim-button" onClick={() => {this.props.claimToy(toy, user)}}><i className='plus icon plus-class'  />I HAD THIS</div> :
+    <div className="unclaim-button" onClick={() => {this.props.unclaimToy( toyOwnerships, toy, user)}}><i className="minus icon minus-class" />UNCLAIM THIS</div> 
    }   </div>
 
     return(
       
        <Card>
-            <div key={this.props.toy.id} >
- 
+            <div key={toy.id} >
+
                 <Card.Content>
-                    <Image className="ToyImage" src={this.props.toy.url} alt={this.props.toy.name} />
-                    <Card.Header><strong>{this.props.toy.name}</strong></Card.Header>
-                    <Card.Description>{this.props.toy.description}</Card.Description>
+                    <Image className="ToyImage" src={toy.url} alt={toy.name} />
+                    <Card.Header><strong>{toy.name}</strong></Card.Header>
+                    <Card.Description>{toy.description}</Card.Description>
                 </Card.Content>
 
                 <Card.Content extra>
                     {/* <Icon name='user' /> {this.props.numUsers !== undefined ? this.props.toy.users.length : 0} */}
 
-                    <i className='users icon user-class' /> {this.props.numUsers !== undefined ? this.props.toy.users.length : 0}
+                    <i className='users icon user-class' /> {numUsers !== undefined ? toy.users.length : 0}
                  </Card.Content>
  
 
-            {this.props.user.username ? buttonsVisible : ""}
+            {user.username ? buttonsVisible : ""}
  
 
              </div>
