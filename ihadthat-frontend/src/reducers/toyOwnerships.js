@@ -5,7 +5,7 @@ export default (state = [], action) => {
             return action.toyOwnerships
                
         case "ADD_TOY_OWNERSHIP_SUCCESS":
-              
+              //concat returns copy, does not alter state
              return state.concat(action.toyOwnership);
 
         case "REMOVE_TOY_OWNERSHIP_SUCCESS":
