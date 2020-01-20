@@ -9,14 +9,14 @@ class ToyCard extends Component {
 
 
   render(){
- 
-    const { toy, user, numUsers, toyOwnerships } = this.props;
+    //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
+    const { toy, user, numUsers, toyOwnerships, claimToy, unclaimToy } = this.props;
 
    let buttonsVisible =  
    <div>
    { toy.claimed !== "true" ? 
-    <div className="claim-button" onClick={() => {this.props.claimToy(toy, user)}}><i className='plus icon plus-class'  />I HAD THIS</div> :
-    <div className="unclaim-button" onClick={() => {this.props.unclaimToy( toyOwnerships, toy, user)}}><i className="minus icon minus-class" />UNCLAIM THIS</div> 
+    <div className="claim-button" onClick={() => {claimToy(toy, user)}}><i className='plus icon plus-class'  />I HAD THIS</div> :
+    <div className="unclaim-button" onClick={() => {unclaimToy( toyOwnerships, toy, user)}}><i className="minus icon minus-class" />UNCLAIM THIS</div> 
    }   </div>
 
     return(
@@ -31,8 +31,6 @@ class ToyCard extends Component {
                 </Card.Content>
 
                 <Card.Content extra>
-                    {/* <Icon name='user' /> {this.props.numUsers !== undefined ? this.props.toy.users.length : 0} */}
-
                     <i className='users icon user-class' /> {numUsers !== undefined ? toy.users.length : 0}
                  </Card.Content>
  
