@@ -23,8 +23,9 @@ import { Divider } from 'semantic-ui-react'
 class App extends React.Component {
 
   componentDidMount() {
+    console.log("a")
     this.props.getToys();
-
+    console.log("b")
 }
  
  

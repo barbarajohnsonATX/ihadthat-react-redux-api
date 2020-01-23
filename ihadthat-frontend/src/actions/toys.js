@@ -22,6 +22,7 @@ export const setToys = toys => {
 
 
 export const getToys = () => {
+  console.log("c")
     return dispatch => {
         return fetch("http://localhost:3000/api/v1/toys",
             { credentials: "include",
@@ -30,7 +31,8 @@ export const getToys = () => {
             })
             .then(r => r.json())
             .then(toys => {
-                console.log("toys", toys)
+                //console.log("toys", toys)
+                console.log("d")
                 if (toys.error) {
                     alert(toys.error)
                 } else {
@@ -43,6 +45,8 @@ export const getToys = () => {
 
             )
     }
+
+    //console.log("e")
 }
 
 

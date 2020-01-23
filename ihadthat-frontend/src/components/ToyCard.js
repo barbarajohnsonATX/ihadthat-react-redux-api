@@ -6,7 +6,20 @@ import { claimToy, unclaimToy } from '../actions/toyOwnerships';
 import { connect } from 'react-redux';
  
 class ToyCard extends Component {
+  
+  
+  constructor(props) {
+    super(props);
+    this.state = { liked: false }
+ 
+  }
 
+  clickHandler = () => {
+    this.setState(prevState => ({
+      liked: !prevState.liked
+    }));
+   }
+ 
 
   render(){
     //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
@@ -19,6 +32,11 @@ class ToyCard extends Component {
     <div className="unclaim-button" onClick={() => {unclaimToy( toyOwnerships, toy, user)}}><i className="minus icon minus-class" />UNCLAIM THIS</div> 
    }   </div>
 
+
+   
+
+  
+
     return(
       
        <Card>
@@ -28,6 +46,16 @@ class ToyCard extends Component {
                     <Image className="ToyImage" src={toy.url} alt={toy.name} />
                     <Card.Header><strong>{toy.name}</strong></Card.Header>
                     <Card.Description>{toy.description}</Card.Description>
+  
+                <div>
+                  { this.state.liked ? 
+                      <button className="unlike-button" onClick={this.clickHandler}><i className="red heart icon"  />Liked</button> :
+                      <button className="like-button" onClick={this.clickHandler}><i className="red heart outline icon" />Like</button> 
+                  }   
+                  </div>
+
+
+ 
                 </Card.Content>
 
                 <Card.Content extra>
