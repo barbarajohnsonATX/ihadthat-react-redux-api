@@ -4,8 +4,8 @@ class Api::V1::SessionsController < ApplicationController
         session[:user_id] = @user.id 
 
         if @user && @user.authenticate(params[:session][:password])
-            render json: @user
-        else 
+            render json: @user, include: ['toys.users']
+         else 
             render json: {
                 error: "Invalid Credentials"
             }

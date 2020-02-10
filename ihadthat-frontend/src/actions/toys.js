@@ -31,19 +31,11 @@ export const getToys = () => {
             })
             .then(r => r.json())
             .then(toys => {
-                //console.log("toys", toys)
-                console.log("d")
-                if (toys.error) {
-                    alert(toys.error)
-                } else {
-                    //debugger
-                    dispatch(setToys(toys))
-                    dispatch(getToyOwnerships());
-                }
-            }
+                dispatch(setToys(toys))
+                dispatch(getToyOwnerships());
+            })
+            .catch(error => dispatch({action: 'ERROR'}))
 
-
-            )
     }
 
     //console.log("e")
@@ -73,7 +65,3 @@ export const createToy = ( toy ) => {
      
 }
 }
- 
-
-
-

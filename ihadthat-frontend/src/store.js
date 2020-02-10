@@ -5,6 +5,10 @@ import loginForm from './reducers/loginForm'
 import signupForm from './reducers/signupForm'
 import toys from './reducers/toys'
 import toyFormData from './reducers/toyFormData'
+import loadStatus from './reducers/loadStatus'
+import errors from './reducers/errors'
+
+
 import toyOwnerships from './reducers/toyOwnerships'
 import thunk from 'redux-thunk';
   
@@ -19,7 +23,9 @@ const reducer = combineReducers({
     toys,
     toyFormData,
     signupForm,
-    toyOwnerships
+    toyOwnerships,
+    loadStatus,
+    errors
 });
 
 const store = createStore(reducer, composeEnhancer(applyMiddleware(thunk)))

@@ -13,7 +13,8 @@ class Toys extends Component {
         const { toys } = this.props;
 
         let sorted = toys.sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
-        
+ 
+ 
         return (
             <div className="Toys">
 
@@ -23,9 +24,10 @@ class Toys extends Component {
 
 
             <strong>All Toys</strong>
+            <div>{this.props.loadStatus}</div>
 
                 <Card.Group itemsPerRow={3}>
-
+ 
                     {toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
                 </Card.Group>
 
@@ -40,6 +42,7 @@ class Toys extends Component {
 const mapStateToProps = (state) => {
     return ({
       toys: state.toys,
+      loadStatus: state.loadStatus
      })
   }
 

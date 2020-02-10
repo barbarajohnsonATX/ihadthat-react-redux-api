@@ -18,15 +18,15 @@ import { getToys } from './actions/toys';
  
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Divider } from 'semantic-ui-react'
+import history from './history';
 
 
 class App extends React.Component {
 
   componentDidMount() {
-    console.log("a")
-    this.props.getToys();
-    console.log("b")
-}
+     this.props.getToys();
+      
+ }
  
  
 
@@ -38,7 +38,7 @@ class App extends React.Component {
     return (
       <div>
     
-      <Router>
+      <Router history={history}>
           <div className="App">
           <NavBar />
 
@@ -69,8 +69,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      currentUser: state.currentUser
-    }
+      currentUser: state.currentUser,
+     }
   }
 
  

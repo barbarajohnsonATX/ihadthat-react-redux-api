@@ -1,20 +1,24 @@
 import { clearLoginForm } from "../actions/loginForm";
 import { resetSignupForm } from "../actions/signupForm";
+import store from '../store'
+//import history from '../history';
 
 //action needs a key of type
 
 // Synchronous action creators
-export const setCurrentUser = user => {
+export const setCurrentUser = (user, toys)  => {
   return {
     type: "SET_CURRENT_USER",
-    user
+    user,
+    toys
   };
 };
 
-export const setMyToys = user => {
+export const setMyToys = (user, toys)=> {
   return {
     type: "GET_MY_TOYS_SUCCESS",
-    user
+    user,
+    toys
   };
 };
 
@@ -38,8 +42,10 @@ export const login = credentials => {
         if (user.error) {
           alert(user.error);
         } else {
-          dispatch(setCurrentUser(user));
-          dispatch(getMyToys(user));
+           dispatch(setCurrentUser(user));
+            
+           dispatch(getMyToys(user));
+  
         }
       });
   };
@@ -51,8 +57,22 @@ export const logout = () => {
     return fetch("http://localhost:3000/api/v1/logout", {
       credentials: "include",
       method: "DELETE"
-    }).then(dispatch(clearLoginForm()));
+    })
+    .then(r => r.json())
+
+    .then( () => {
+      dispatch(clearLoginForm())
+     //history.push("/toys")
+
+    }
+
+         
+     
+    )
+
+ 
   };
+ 
 };
 
 export const getMyToys = user => {
@@ -67,7 +87,8 @@ export const getMyToys = user => {
         if (u.error) {
           alert(u.error);
         } else {
-          dispatch(setMyToys(u));
+            let t = store.getState().toys
+          dispatch(setMyToys(u, t));
         }
       });
   };

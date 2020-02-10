@@ -9,13 +9,10 @@ class MyStuff extends Component {
 
     render() {
       //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
-      const { toys, user  } = this.props;
+      const { user  } = this.props;
 
        
-      // filter user's toys from toys to get number of users of each toy to avoid undefined length error
-       let userToys = toys.filter(toy => user.toys.map(t => t.id).includes(toy.id))
-        
-
+      
                         
            return (
 
@@ -28,9 +25,8 @@ class MyStuff extends Component {
 
                 
                  <Card.Group itemsPerRow={3}>
-    
-                 {userToys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
-         </Card.Group>
+                    {user.toys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
+                </Card.Group>
              </div>
         )
     }
@@ -41,9 +37,7 @@ class MyStuff extends Component {
 const mapStateToProps = (state) => {
     return ({
       user: state.currentUser,
-      toys: state.toys
-    })
+     })
   }
 
  export default connect(mapStateToProps)(MyStuff);
- 

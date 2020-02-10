@@ -47,7 +47,9 @@ export const getToyOwnerships = () => {
         if (toy_ownerships.error) {
             alert(toy_ownerships.error)
         } else {
+ 
              dispatch(setToyOwnerships(toy_ownerships))
+
         }     
     })
 }
