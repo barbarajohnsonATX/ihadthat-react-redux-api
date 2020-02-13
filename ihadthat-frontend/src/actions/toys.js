@@ -17,9 +17,10 @@ export const addToy = toy => {
 };
 
 export const getToys = () => {
-  console.log("c");
+  //thunk is function returned by another function
+  //allows dispatch of actions inside the returned function
   return dispatch => {
-    dispatch({ type: "REQUESTING" });
+   // dispatch({ type: "REQUESTING" });
 
     //fetch returns a promise we are waiting to resolve
     return (
@@ -34,7 +35,6 @@ export const getToys = () => {
         .then(toys => {
           dispatch(setToys(toys));
           dispatch(getToyOwnerships());
-          dispatch({ type: "LOADED" });
         })
         //if Promise is rejected
         .catch(error => {

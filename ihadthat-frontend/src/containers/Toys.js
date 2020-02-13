@@ -8,27 +8,54 @@ import { Divider } from 'semantic-ui-react'
 
 class Toys extends Component {
 
+    constructor(props) {
+        //super calls the constructor of parent class Component
+        super(props);
+    
+        //set initial state in constructor since it runs first
+        this.state = { isSorted: false }
+     
+      }
+    
+      //alter state when like button is clicked using setState
+      alphaSortHandler = () => {
+        this.setState(prevState => ({
+            isSorted: !prevState.isSorted
+        }));
+
+       }
+
+
     render() {
         //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
         const { toys } = this.props;
+        
+        //copy toys so sort does not mutate
+        let topToys = [...toys].sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
 
-        let sorted = toys.sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
- 
+        let sortByName = [...toys].sort((a, b) => (a.name > b.name ? 1 : -1 ))
  
         return (
             <div className="Toys">
 
             <Divider />
-            <Stats numToys={toys.length} topThree={sorted.slice(0, 3)}/>
+            <Stats numToys={toys.length} topThree={topToys.slice(0, 3)}/>
             <Divider />
 
 
-            <strong>All Toys</strong>
-            <div>{this.props.loadStatus}</div>
+
+            {/* <strong>All Toys</strong> */}
+
+            <button onClick={this.alphaSortHandler}>Sort Toys</button>
+
+
 
                 <Card.Group itemsPerRow={3}>
- 
-                    {toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
+                    {this.state.isSorted ? 
+                        sortByName.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />) :
+                        toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)
+                    }
+
                 </Card.Group>
 
 
