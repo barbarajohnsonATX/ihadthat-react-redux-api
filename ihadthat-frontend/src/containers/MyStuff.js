@@ -11,9 +11,7 @@ class MyStuff extends Component {
       //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
       const { user  } = this.props;
 
-       
       
-                        
            return (
 
             <div className="My Stuff">
@@ -25,7 +23,8 @@ class MyStuff extends Component {
 
                 
                  <Card.Group itemsPerRow={3}>
-                    {user.toys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
+                 {user.toys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
+
                 </Card.Group>
              </div>
         )

@@ -24,17 +24,23 @@ export const setToys = toys => {
 export const getToys = () => {
   console.log("c")
     return dispatch => {
+      dispatch({type: 'REQUESTING'})
+
+      //fetch returns a promise we are waiting to resolve
         return fetch("http://localhost:3000/api/v1/toys",
             { credentials: "include",
               method: "GET",
               headers: { "Content-Type": "application/json" },
             })
+            //when resolved, parse response data to JSON
             .then(r => r.json())
+            //dispatch action to set toys and send to reducer to update state
             .then(toys => {
                 dispatch(setToys(toys))
                 dispatch(getToyOwnerships());
+                dispatch({type: 'LOADED'})
             })
-            .catch(error => dispatch({action: 'ERROR'}))
+            .catch(error => dispatch({type: 'ERROR'}))
 
     }
 

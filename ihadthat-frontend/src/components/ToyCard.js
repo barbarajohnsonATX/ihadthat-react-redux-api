@@ -9,11 +9,15 @@ class ToyCard extends Component {
   
   
   constructor(props) {
+    //super calls the constructor of parent class Component
     super(props);
+
+    //set initial state in constructor since it runs first
     this.state = { liked: false }
  
   }
 
+  //alter state when like button is clicked using setState
   clickHandler = () => {
     this.setState(prevState => ({
       liked: !prevState.liked
