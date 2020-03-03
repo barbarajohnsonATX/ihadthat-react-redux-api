@@ -16,11 +16,24 @@ export const setCurrentUser = (user, toys)  => {
 
 export const setMyToys = (user, toys)=> {
   return {
-    type: "GET_MY_TOYS_SUCCESS",
+   // type: "GET_MY_TOYS_SUCCESS",
+    type: "GET_USER_TOYS_SUCCESS",
+
     user,
     toys
   };
 };
+
+
+export const markAsClaimed = (user, toys)=> {
+  return {
+    type: "MARK_AS_CLAIMED",
+
+    user,
+    toys
+  };
+};
+
 
 export const clearCurrentUser = () => {
   return {
@@ -87,8 +100,10 @@ export const getMyToys = user => {
         if (u.error) {
           alert(u.error);
         } else {
-            let t = store.getState().toys
-          dispatch(setMyToys(u, t));
+            let t = store.getState().toysReducer
+          dispatch(setMyToys(u, t.toys));
+          
+          dispatch(markAsClaimed(u,t.toys));
         }
       });
   };

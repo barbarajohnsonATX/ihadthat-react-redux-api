@@ -4,7 +4,6 @@ import './App.css';
 
 import { connect } from 'react-redux';
 import  NavBar  from './components/NavBar'
-// import MainContainer from './containers/MainContainer';
 import Toys from './containers/Toys';
 import ToyForm from './components/ToyForm';
 import MyStuff from './containers/MyStuff';
@@ -14,7 +13,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Login from "./components/Login"
 import Logout from "./components/Logout"
-import { getToys } from './actions/toys';
+import { getAllToys } from './actions/toys';
  
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { Divider } from 'semantic-ui-react'
@@ -24,7 +23,8 @@ import history from './history';
 class App extends React.Component {
 
   componentDidMount() {
-     this.props.getToys();
+     this.props.getAllToys();
+
       
  }
  
@@ -32,7 +32,7 @@ class App extends React.Component {
 
   render() {
      
-    let loggedIn=this.props.currentUser.username
+    let loggedIn=this.props.toysReducer.currentUser.username
    
 
     return (
@@ -69,11 +69,11 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      currentUser: state.currentUser,
+      toysReducer: state.toysReducer
      }
   }
 
  
 
 
- export default connect(mapStateToProps, {getToys})(App);
+ export default connect(mapStateToProps, {getAllToys})(App);

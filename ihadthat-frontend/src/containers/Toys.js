@@ -19,8 +19,8 @@ class Toys extends Component {
     
       //alter state when like button is clicked using setState
       alphaSortHandler = () => {
-        this.setState(prevState => ({
-            isSorted: !prevState.isSorted
+        this.setState(state => ({
+            isSorted: !state.isSorted
         }));
 
        }
@@ -28,23 +28,20 @@ class Toys extends Component {
 
     render() {
         //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
-        const { toys } = this.props;
+        const { toysReducer} = this.props;
         
         //copy toys so sort does not mutate
-        let topToys = [...toys].sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
+        let topToys = [...toysReducer.toys].sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
 
-        let sortByName = [...toys].sort((a, b) => (a.name > b.name ? 1 : -1 ))
+        let sortByName = [...toysReducer.toys].sort((a, b) => (a.name > b.name ? 1 : -1 ))
  
         return (
             <div className="Toys">
 
             <Divider />
-            <Stats numToys={toys.length} topThree={topToys.slice(0, 3)}/>
+            <Stats numToys={toysReducer.toys.length} topThree={topToys.slice(0, 3)}/>
             <Divider />
 
-
-
-            {/* <strong>All Toys</strong> */}
 
             <button onClick={this.alphaSortHandler}>Sort Toys</button>
 
@@ -53,7 +50,7 @@ class Toys extends Component {
                 <Card.Group itemsPerRow={3}>
                     {this.state.isSorted ? 
                         sortByName.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />) :
-                        toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)
+                        toysReducer.toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)
                     }
 
                 </Card.Group>
@@ -68,8 +65,7 @@ class Toys extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-      toys: state.toys,
-      loadStatus: state.loadStatus
+      toysReducer: state.toysReducer
      })
   }
 

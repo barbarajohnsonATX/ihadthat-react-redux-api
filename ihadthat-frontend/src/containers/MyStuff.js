@@ -7,23 +7,26 @@ class MyStuff extends Component {
 
  
 
+
     render() {
       //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
-      const { user  } = this.props;
+      const { toysReducer  } = this.props;
 
       
            return (
 
             <div className="My Stuff">
               <Divider hidden />
+
+             
  
-                {user.username ? <h3>{user.username}'s Toys</h3> : <strong>Log in or sign up</strong>}
-                
+                {toysReducer.currentUser.username ? <h3>{toysReducer.currentUser.username}'s Toys</h3> : <strong>Log in or sign up</strong>}
+
                 <Divider hidden />
 
                 
                  <Card.Group itemsPerRow={3}>
-                 {user.toys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
+                 {toysReducer.userToys.map((toy, id) => <ToyCard numUsers={toy.users.length} claimed={toy.claimed} key={id} toy={toy} />)}
 
                 </Card.Group>
              </div>
@@ -35,7 +38,7 @@ class MyStuff extends Component {
 
 const mapStateToProps = (state) => {
     return ({
-      user: state.currentUser,
+      toysReducer: state.toysReducer
      })
   }
 

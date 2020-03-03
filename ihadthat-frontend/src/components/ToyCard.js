@@ -19,21 +19,21 @@ class ToyCard extends Component {
 
   //alter state when like button is clicked using setState
   clickHandler = () => {
-    this.setState(prevState => ({
-      liked: !prevState.liked
+    this.setState(state => ({
+      liked: !state.liked
     }));
    }
  
 
   render(){
     //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
-    const { toy, user, numUsers, toyOwnerships, claimToy, unclaimToy } = this.props;
+    const { toy, numUsers, claimToy, unclaimToy, toysReducer } = this.props;
 
    let buttonsVisible =  
    <div>
    { toy.claimed !== "true" ? 
-    <div className="claim-button" onClick={() => {claimToy(toy, user)}}><i className='plus icon plus-class'  />I HAD THIS</div> :
-    <div className="unclaim-button" onClick={() => {unclaimToy( toyOwnerships, toy, user)}}><i className="minus icon minus-class" />UNCLAIM THIS</div> 
+    <div className="claim-button" onClick={() => {claimToy(toy, toysReducer.currentUser)}}><i className='plus icon plus-class'  />I HAD THIS</div> :
+    <div className="unclaim-button" onClick={() => {unclaimToy( toysReducer.toyOwnerships, toy, toysReducer.currentUser)}}><i className="minus icon minus-class" />UNCLAIM THIS</div> 
    }   </div>
 
 
@@ -67,7 +67,7 @@ class ToyCard extends Component {
                  </Card.Content>
  
 
-            {user.username ? buttonsVisible : ""}
+            {toysReducer.currentUser.username ? buttonsVisible : ""}
  
 
              </div>
@@ -83,7 +83,8 @@ const mapStateToProps = state => {
   return {
     toys: state.toys,
     user: state.currentUser,
-    toyOwnerships: state.toyOwnerships
+    toyOwnerships: state.toyOwnerships,
+    toysReducer: state.toysReducer
   }
 }
 

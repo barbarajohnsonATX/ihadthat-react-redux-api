@@ -2,25 +2,29 @@ import { resetToyForm } from "./toyForm";
 import { getToyOwnerships } from "./toyOwnerships";
 
 // ** Actions Creators **
-export const setToys = toys => {
+export const fetchToysSuccess = toys => {
   return {
-    type: "GET_TOYS_SUCCESS",
+    type: "GET_ALL_TOYS_SUCCESS",
     toys
   };
 };
 
-export const addToy = toy => {
-  return {
-    type: "CREATE_TOY_SUCCESS",
-    toy
-  };
-};
 
-export const getToys = () => {
+export const addToy = toy => {
+    return {
+      type: "CREATE_TOY_SUCCESS",
+      toy
+    };
+  };
+
+
+ 
+
+export const getAllToys = () => {
   //thunk is function returned by another function
   //allows dispatch of actions inside the returned function
   return dispatch => {
-   // dispatch({ type: "REQUESTING" });
+     dispatch({type: 'LOADING'})
 
     //fetch returns a promise we are waiting to resolve
     return (
@@ -33,32 +37,35 @@ export const getToys = () => {
         .then(r => r.json())
         //dispatch action to set toys and send to reducer to update state
         .then(toys => {
-          dispatch(setToys(toys));
+          dispatch(fetchToysSuccess(toys));
           dispatch(getToyOwnerships());
-        })
+
+         })
         //if Promise is rejected
         .catch(error => {
           console.log(error);
-          dispatch({ type: "ERROR" });
-        })
+         })
     );
   };
 
   //console.log("e")
 };
 
+
 export const createToy = toy => {
-  return dispatch => {
-    return fetch("http://localhost:3000/api/v1/toys", {
-      credentials: "include",
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(toy)
-    })
-      .then(r => r.json())
-      .then(toy => {
-        dispatch(addToy(toy));
-        dispatch(resetToyForm());
-      });
+    return dispatch => {
+      return fetch("http://localhost:3000/api/v1/toys", {
+        credentials: "include",
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(toy)
+      })
+        .then(r => r.json())
+        .then(toy => {
+          dispatch(addToy(toy));
+          dispatch(resetToyForm());
+        });
+    };
   };
-};
+
+  
