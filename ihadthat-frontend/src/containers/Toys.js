@@ -8,22 +8,6 @@ import { Divider } from 'semantic-ui-react'
 
 class Toys extends Component {
 
-    constructor(props) {
-        //super calls the constructor of parent class Component
-        super(props);
-    
-        //set initial state in constructor since it runs first
-        this.state = { isSorted: false }
-     
-      }
-    
-      //alter state when like button is clicked using setState
-      alphaSortHandler = () => {
-        this.setState(state => ({
-            isSorted: !state.isSorted
-        }));
-
-       }
 
 
     render() {
@@ -33,8 +17,7 @@ class Toys extends Component {
         //copy toys so sort does not mutate
         let topToys = [...toysReducer.toys].sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
 
-        let sortByName = [...toysReducer.toys].sort((a, b) => (a.name > b.name ? 1 : -1 ))
- 
+  
         return (
             <div className="Toys">
 
@@ -43,16 +26,10 @@ class Toys extends Component {
             <Divider />
 
 
-            <button onClick={this.alphaSortHandler}>Sort Toys</button>
-
-
-
+ 
                 <Card.Group itemsPerRow={3}>
-                    {this.state.isSorted ? 
-                        sortByName.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />) :
-                        toysReducer.toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)
-                    }
-
+                    { toysReducer.toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
+ 
                 </Card.Group>
 
 
