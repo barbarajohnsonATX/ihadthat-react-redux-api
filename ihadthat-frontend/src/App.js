@@ -23,7 +23,7 @@ import history from './history';
 class App extends React.Component {
 
   componentDidMount() {
-     this.props.getAllToys();
+      this.props.getAllToys();
 
       
  }
@@ -33,11 +33,11 @@ class App extends React.Component {
   render() {
      
     let loggedIn=this.props.toysReducer.currentUser.username
-   
+ 
 
     return (
       <div>
-    
+
       <Router history={history}>
           <div className="App">
           <NavBar />

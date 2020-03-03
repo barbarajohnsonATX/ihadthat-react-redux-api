@@ -25,6 +25,7 @@ class ToyCard extends Component {
    }
  
 
+ 
   render(){
     //Destructure to extract data from objects into their own variable- ex: toy instead this.props.toy)
     const { toy, numUsers, claimToy, unclaimToy, toysReducer } = this.props;
@@ -37,10 +38,6 @@ class ToyCard extends Component {
    }   </div>
 
 
-   
-
-  
-
     return(
       
        <Card>
@@ -51,6 +48,8 @@ class ToyCard extends Component {
                     <Card.Header><strong>{toy.name}</strong></Card.Header>
                     <Card.Description>{toy.description}</Card.Description>
   
+   
+
                 <div>
                   { this.state.liked ? 
                       <button className="unlike-button" onClick={this.clickHandler}><i className="red heart icon"  />Liked</button> :

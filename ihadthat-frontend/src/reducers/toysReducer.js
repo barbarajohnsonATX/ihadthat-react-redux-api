@@ -4,8 +4,8 @@ const initialState =
     currentUser: "",
     userToys: [],
     toyOwnerships: [],
-    isLoading: false
-
+    isLoading: false,
+ 
 }
       
 
@@ -107,6 +107,7 @@ export default (state = initialState, action) => {
                     ...state,
                     toys: [...state.toys, action.toy]
             }
+
        
                 
         default:

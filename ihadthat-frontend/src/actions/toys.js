@@ -1,7 +1,12 @@
 import { resetToyForm } from "./toyForm";
 import { getToyOwnerships } from "./toyOwnerships";
 
-// ** Actions Creators **
+// ** Synchronous Actions Creators **
+// Action creators create actions which are plain objects → 
+// Actions are dispatched to the store → 
+// the store invokes reducers → 
+// reducers generate new state 
+
 export const fetchToysSuccess = toys => {
   return {
     type: "GET_ALL_TOYS_SUCCESS",
@@ -19,7 +24,11 @@ export const addToy = toy => {
 
 
  
-
+// ** Asynchronous Action Creators **
+// If a function (e.g. a thunk) is dispatched, redux-thunk calls that function, passing in the store's dispatch and getState. 
+// The middleware intercepts the thunk so it does not go directly to the reducer 
+// When that async fetch resolves,the callback can dispatch a normal action to the store. 
+ 
 export const getAllToys = () => {
   //thunk is function returned by another function
   //allows dispatch of actions inside the returned function
@@ -43,13 +52,15 @@ export const getAllToys = () => {
          })
         //if Promise is rejected
         .catch(error => {
-          console.log(error);
-         })
+          console.log("Error: ", error);
+          })
     );
   };
 
-  //console.log("e")
+   
 };
+
+ 
 
 
 export const createToy = toy => {

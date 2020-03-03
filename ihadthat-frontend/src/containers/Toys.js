@@ -8,6 +8,12 @@ import { Divider } from 'semantic-ui-react'
 
 class Toys extends Component {
 
+    state = {newSearch: ""}
+
+
+    handleInputChange = e => {
+        this.setState({newSearch: e.target.value})
+    }
 
 
     render() {
@@ -16,11 +22,11 @@ class Toys extends Component {
         
         //copy toys so sort does not mutate
         let topToys = [...toysReducer.toys].sort((a, b) => (a.users.length > b.users.length) ? -1 : 1)
-
+        let toysMatch = toysReducer.toys.filter( (toy ) => toy.name.toLowerCase().includes(this.state.newSearch.toLowerCase()))
   
         return (
             <div className="Toys">
-
+                <input placeholder="toyName" value={this.state.newSearch} name="toyName" type="text" onChange={this.handleInputChange} />
             <Divider />
             <Stats numToys={toysReducer.toys.length} topThree={topToys.slice(0, 3)}/>
             <Divider />
@@ -28,9 +34,9 @@ class Toys extends Component {
 
  
                 <Card.Group itemsPerRow={3}>
-                    { toysReducer.toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
- 
-                </Card.Group>
+                    {/* { toysReducer.toys.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)} */}
+                            { toysMatch.map((toy, id) => <ToyCard  claimed={toy.claimed} numUsers={toy.users.length} key={id} toy={toy} />)}
+                            </Card.Group>
 
 
             </div>
